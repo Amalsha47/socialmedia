@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Data
 @Document(collection = "posts")
@@ -20,6 +21,11 @@ public class Post {
         this.content = content;
         this.user = user;
         this.createdAt = LocalDateTime.now();
+
+        // Generate ID
+        long timestamp = createdAt.atZone(
+                ZoneId.systemDefault().systemDefault()).toInstant().toEpochMilli();
+        this.id = user + "_" + timestamp;
     }
 
     public String getId() {
