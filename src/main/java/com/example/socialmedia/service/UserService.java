@@ -11,12 +11,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b9efdd25cb65b5662c569204d6822a683a38e78
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+<<<<<<< HEAD
     public ResponseObjectiveService findAll() {
         ResponseObjectiveService responseObj = new ResponseObjectiveService();
         responseObj.setPayload(userRepository.findAll());
@@ -61,6 +66,8 @@ public class UserService {
         }
     }
 
+=======
+>>>>>>> 7b9efdd25cb65b5662c569204d6822a683a38e78
     // Register new user
     public User signUpUser(User user) {
 
@@ -73,11 +80,16 @@ public class UserService {
     }
 
     // Authenticate user
+<<<<<<< HEAD
     public boolean authenticateUser(String username, String password) {
+=======
+    public boolean authenticateUser(String username, String password){
+>>>>>>> 7b9efdd25cb65b5662c569204d6822a683a38e78
         Optional<User> user = userRepository.findByUsername(username);
         return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
     }
 
+<<<<<<< HEAD
     public ResponseObjectiveService update(User inputUser) {
         ResponseObjectiveService responseObj = new ResponseObjectiveService();
         Optional<User> optUser = userRepository.findById(inputUser.getId());
@@ -103,4 +115,6 @@ public class UserService {
         }
 
     }
+=======
+>>>>>>> 7b9efdd25cb65b5662c569204d6822a683a38e78
 }
