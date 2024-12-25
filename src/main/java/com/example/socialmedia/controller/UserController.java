@@ -1,34 +1,64 @@
 package com.example.socialmedia.controller;
 
-import com.example.socialmedia.model.LoginRequest;
-import com.example.socialmedia.model.User;
-import com.example.socialmedia.service.UserService;
+import com.example.project.entity.AuthRequest;
+import com.example.project.entity.UserInfo;
+import com.example.project.service.JwtService;
+import com.example.project.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/auth")
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserInfoService userInforService;
 
-    // Sign up user
-    @PostMapping("/signup")
-    public User signUpUser(@RequestBody User user) {
-        return userService.signUpUser(user);
+    @Autowired
+    private JwtService jwtService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this end point not protected";
     }
 
-    // Login
+    @PostMapping("/signup")
+    public String signUp(@RequestBody UserInfo userInfo) {
+        return userInforService.signUp(userInfo);
+    }
+
+    @GetMapping("/user/profile")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String userProfile() {
+        return "Welcome to userProfile";
+    }
+
+    @GetMapping("/user/Admin")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String adminProfile() {
+        return "Welcome to Admin Profile";
+    }
+
     @PostMapping("/login")
-    public String loginUser(@RequestBody LoginRequest loginRequest) {
-        if (userService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword())) {
-            return "Login succussfull";
+    public String login(@RequestBody AuthRequest authRequest){
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authRequest.getUserName(), authRequest.getUserPassword()));
+
+        if (authentication.isAuthenticated()) {
+            return jwtService.generateToken(authRequest.getUserName());
         }
         else {
-            throw new IllegalArgumentException("Invalied username or password");
+            throw new UsernameNotFoundException("Invalied User name");
         }
+
     }
-
 }
-
