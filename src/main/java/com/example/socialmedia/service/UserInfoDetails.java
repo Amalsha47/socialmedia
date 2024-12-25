@@ -1,6 +1,6 @@
 package com.example.socialmedia.service;
 
-import com.example.project.entity.UserInfo;
+import com.example.socialmedia.entity.UserInfo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

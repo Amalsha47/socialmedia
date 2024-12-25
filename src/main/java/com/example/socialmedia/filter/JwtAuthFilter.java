@@ -1,7 +1,7 @@
 package com.example.socialmedia.filter;
 
-import com.example.project.service.JwtService;
-import com.example.project.service.UserInfoService;
+import com.example.socialmedia.service.JwtService;
+import com.example.socialmedia.service.UserInfoService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

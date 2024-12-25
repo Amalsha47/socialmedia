@@ -1,6 +1,6 @@
 package com.example.socialmedia.repository;
 
-import com.example.project.entity.UserInfo;
+import com.example.socialmedia.entity.UserInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

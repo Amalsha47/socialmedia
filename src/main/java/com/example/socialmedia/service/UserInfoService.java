@@ -1,7 +1,7 @@
-package com.example.project.service;
+package com.example.socialmedia.service;
 
-import com.example.project.entity.UserInfo;
-import com.example.project.repository.UserInfoRepository;
+import com.example.socialmedia.entity.UserInfo;
+import com.example.socialmedia.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

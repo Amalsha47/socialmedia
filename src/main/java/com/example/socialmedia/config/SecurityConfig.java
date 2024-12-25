@@ -1,7 +1,7 @@
 package com.example.socialmedia.config;
 
-import com.example.project.filter.JwtAuthFilter;
-import com.example.project.service.UserInfoService;
+import com.example.socialmedia.filter.JwtAuthFilter;
+import com.example.socialmedia.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

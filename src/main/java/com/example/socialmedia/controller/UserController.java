@@ -1,9 +1,9 @@
 package com.example.socialmedia.controller;
 
-import com.example.project.entity.AuthRequest;
-import com.example.project.entity.UserInfo;
-import com.example.project.service.JwtService;
-import com.example.project.service.UserInfoService;
+import com.example.socialmedia.entity.AuthRequest;
+import com.example.socialmedia.entity.UserInfo;
+import com.example.socialmedia.service.JwtService;
+import com.example.socialmedia.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
